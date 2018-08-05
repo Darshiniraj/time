@@ -1,0 +1,18 @@
+final FontRequest fontRequest = new FontRequest(
+                    "com.google.android.gms.fonts",
+                    "com.google.android.gms",
+                    "Noto Color Emoji Compat",
+                    R.array.com_google_android_gms_fonts_certs);
+EmojiCompat.init(new FontRequestEmojiCompatConfig(getApplicationContext(), fontRequest)
+                    .setReplaceAll(true)
+                    .registerInitCallback(new EmojiCompat.InitCallback() {
+                        @Override
+                        public void onInitialized() {
+                            Log.i(TAG, "EmojiCompat initialized");
+                        }
+
+                        @Override
+                        public void onFailed(@Nullable Throwable throwable) {
+                            Log.e(TAG, "EmojiCompat initialization failed", throwable);
+                        }
+                    });)
